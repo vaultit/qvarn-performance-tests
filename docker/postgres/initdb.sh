@@ -1,0 +1,18 @@
+#!/bin/sh
+
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
+    CREATE DATABASE planb;
+    GRANT ALL PRIVILEGES ON DATABASE planb TO qvarn;
+
+    CREATE DATABASE jsonb91alog;
+    GRANT ALL PRIVILEGES ON DATABASE jsonb91alog TO qvarn;
+
+    CREATE DATABASE jsonb91noalog;
+    GRANT ALL PRIVILEGES ON DATABASE jsonb91noalog TO qvarn;
+
+    CREATE DATABASE jsonb92alog;
+    GRANT ALL PRIVILEGES ON DATABASE jsonb92alog TO qvarn;
+
+    CREATE DATABASE jsonb92noalog;
+    GRANT ALL PRIVILEGES ON DATABASE jsonb92noalog TO qvarn;
+EOSQL

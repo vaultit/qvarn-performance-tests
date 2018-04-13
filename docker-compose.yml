@@ -1,0 +1,93 @@
+version: "2"
+services:
+
+  postgres:
+    build: docker/postgres
+    environment:
+      POSTGRES_PASSWORD: qvarn
+      POSTGRES_USER: qvarn
+      POSTGRES_DB: qvarn
+    ports:
+      - "5432:5432"
+    volumes:
+      - /var/lib/postgresql
+
+        #  mongo:
+        #    image: mongo:3.6.3
+
+  qvarn:
+    build:
+      context: .
+      dockerfile: docker/qvarn/Dockerfile
+    depends_on:
+      - "postgres"
+    ports:
+      - "9001:8000"
+
+  jsonb-91-no-alog:
+    image: qvarn-jsonb-0.91
+    build:
+      context: .
+      dockerfile: docker/jsonb-91/Dockerfile
+    environment:
+      - "QVARN_CONFIG=/etc/qvarn/qvarn-no-alog.conf"
+    depends_on:
+      - "postgres"
+    ports:
+      - "9002:8000"
+
+  jsonb-91-alog:
+    image: qvarn-jsonb-0.91
+    build:
+      context: .
+      dockerfile: docker/jsonb-91/Dockerfile
+    environment:
+      - "QVARN_CONFIG=/etc/qvarn/qvarn-alog.conf"
+    depends_on:
+      - "postgres"
+    ports:
+      - "9003:8000"
+
+  jsonb-92-no-alog:
+    image: qvarn-jsonb-0.92
+    build:
+      context: .
+      dockerfile: docker/jsonb-92/Dockerfile
+    environment:
+      - "QVARN_CONFIG=/etc/qvarn/qvarn-no-alog.conf"
+    depends_on:
+      - "postgres"
+    ports:
+      - "9004:8000"
+
+  jsonb-92-alog:
+    image: qvarn-jsonb-0.92
+    build:
+      context: .
+      dockerfile: docker/jsonb-92/Dockerfile
+    environment:
+      - "QVARN_CONFIG=/etc/qvarn/qvarn-alog.conf"
+    depends_on:
+      - "postgres"
+    ports:
+      - "9005:8000"
+
+  planb:
+    build:
+      context: .
+      dockerfile: docker/planb/Dockerfile
+    depends_on:
+      - "postgres"
+    ports:
+      - "9006:8000"
+
+        #   qvarnmongo:
+        #     build:
+        #       context: .
+        #       dockerfile: docker/qvarn-mongo/Dockerfile
+        #     links:
+        #       - mongo
+        #     depends_on:
+        #       - mongo
+        #     ports:
+        #       - "9007:9004"

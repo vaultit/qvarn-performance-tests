@@ -1,0 +1,13 @@
+faker
+jinja2
+jupyter
+matplotlib
+pandas
+pycryptodome
+requests
+seaborn
+tqdm
+ujson
+pprintpp
+pyjwt
+cryptography

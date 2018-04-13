@@ -1,0 +1,9 @@
+[submodule "implementations/qvarn-planb"]
+	path = implementations/qvarn-planb
+	url = https://github.com/vaultit/qvarn-planb
+[submodule "implementations/qvarn-jsonb-0.91"]
+	path = implementations/qvarn-jsonb-0.91
+	url = https://github.com/vaultit/qvarn-jsonb
+[submodule "implementations/qvarn-jsonb-0.92"]
+	path = implementations/qvarn-jsonb-0.92
+	url = https://github.com/vaultit/qvarn-jsonb

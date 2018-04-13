@@ -1,0 +1,6 @@
+*.pdf
+/env
+/graphs/*.png
+/run-output/*.json
+/token
+/notebooks/orgs.jsonl
