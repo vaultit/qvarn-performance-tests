@@ -2,17 +2,16 @@
 
 set -e
 
-# wait for postgres
-sleep 5
+# wait for objstore
+sleep 10
 
-export QVARN_CONFIG=/etc/qvarn.conf
-
+export QVARN_CONFIG="/etc/qvarn/qvarn.conf"
 env/bin/gunicorn \
-    --bind 0.0.0.0:9004 \
+    --bind 0.0.0.0:8000 \
     --workers 1 \
     --threads 1 \
     --log-level debug \
     --capture-output \
     --limit-request-field_size 0 \
-    --timeout 300 \
     qvarn.backend:app
+

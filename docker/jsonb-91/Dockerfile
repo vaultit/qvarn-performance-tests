@@ -1,4 +1,4 @@
-FROM python:3.5-alpine
+FROM python:3.5-alpine3.4
 
 WORKDIR /opt/qvarn
 
@@ -16,6 +16,7 @@ RUN apk update \
         py-setuptools \
         libffi-dev \
         openssl-dev \
+        py-cryptography \
  && mkdir -p /var/log/qvarn
 
 COPY implementations/qvarn-jsonb-0.91 /opt/qvarn
@@ -25,7 +26,7 @@ COPY resources /etc/qvarn/resources
 COPY docker/jsonb-91/run.sh /run.sh
 COPY vendor/ /tmp/vendor
 
-RUN python3 -m venv env \
+RUN python3 -m venv env --system-site-packages \
  && env/bin/pip install --upgrade pip setuptools wheel \
  && env/bin/pip install -f /tmp/vendor -r requirements.txt \
  && env/bin/pip install -f /tmp/vendor -e .

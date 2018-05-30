@@ -18,12 +18,15 @@ RUN apk update \
         openssl-dev \
  && mkdir -p /var/log/qvarn
 
-COPY implementations/qvarn-jsonb-0.92 /opt/qvarn
-COPY docker/jsonb-92/qvarn-no-alog.conf /etc/qvarn/qvarn-no-alog.conf
-COPY docker/jsonb-92/qvarn-alog.conf /etc/qvarn/qvarn-alog.conf
-COPY resources /etc/qvarn/resources
-COPY docker/jsonb-92/run.sh /run.sh
 COPY vendor/ /tmp/vendor
+COPY resources /etc/qvarn/resources
+COPY implementations/qvarn-jsonb-0.95 /opt/qvarn
+COPY docker/jsonb-95/requirements.txt requirements.txt
+COPY docker/jsonb-95/qvarn.conf /etc/qvarn/qvarn.conf
+COPY docker/jsonb-95/objstore_postgres.conf /etc/qvarn/objstore_postgres.conf
+COPY docker/jsonb-95/Procfile /opt/qvarn/Procfile
+COPY docker/jsonb-95/run-objstore.sh /run-objstore.sh
+COPY docker/jsonb-95/run-qvarn.sh /run-qvarn.sh
 
 RUN python3 -m venv env \
  && env/bin/pip install --upgrade pip setuptools wheel \
@@ -31,4 +34,4 @@ RUN python3 -m venv env \
  && env/bin/pip install -f /tmp/vendor -e .
 
 EXPOSE 8000
-CMD ["/run.sh"]
+CMD ["env/bin/honcho", "start"]

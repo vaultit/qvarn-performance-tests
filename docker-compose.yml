@@ -72,6 +72,16 @@ services:
     ports:
       - "9005:8000"
 
+  jsonb-95-alog:
+    image: qvarn-jsonb-0.95
+    build:
+      context: .
+      dockerfile: docker/jsonb-95/Dockerfile
+    depends_on:
+      - "postgres"
+    ports:
+      - "9006:8000"
+
   planb:
     build:
       context: .
@@ -79,15 +89,4 @@ services:
     depends_on:
       - "postgres"
     ports:
-      - "9006:8000"
-
-        #   qvarnmongo:
-        #     build:
-        #       context: .
-        #       dockerfile: docker/qvarn-mongo/Dockerfile
-        #     links:
-        #       - mongo
-        #     depends_on:
-        #       - mongo
-        #     ports:
-        #       - "9007:9004"
+      - "9007:8000"

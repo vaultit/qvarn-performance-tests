@@ -1,0 +1,2 @@
+objstore: /run-objstore.sh
+qvarn: /run-qvarn.sh

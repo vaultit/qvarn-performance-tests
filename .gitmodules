@@ -7,3 +7,7 @@
 [submodule "implementations/qvarn-jsonb-0.92"]
 	path = implementations/qvarn-jsonb-0.92
 	url = https://github.com/vaultit/qvarn-jsonb
+[submodule "qvarn-jsonb"]
+	path = implementations/qvarn-jsonb-0.95
+	url = git://git.qvarnlabs.net/qvarn-jsonb
+	branch = master

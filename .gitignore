@@ -4,3 +4,4 @@
 /run-output/*.json
 /token
 /notebooks/orgs.jsonl
+/.ipynb_checkpoints/*
