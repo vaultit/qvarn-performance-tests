@@ -12,7 +12,7 @@ psycopg2==2.7.3.2
 pycparser==2.18           # via cffi
 pycryptodome==3.4.11
 pyjwt==1.5.3
-pyyaml==3.12
+pyyaml==5.4
 requests==2.18.4
 six==1.11.0               # via cryptography
 slog==0.5+git
