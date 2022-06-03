@@ -1,6 +1,6 @@
 apifw==0.31+git
 asn1crypto==0.24.0        # via cryptography
-bottle==0.12.13
+bottle==0.12.20
 certifi==2018.1.18        # via requests
 cffi==1.11.4              # via cryptography
 chardet==3.0.4            # via requests
